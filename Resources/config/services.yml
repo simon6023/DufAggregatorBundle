@@ -1,0 +1,24 @@
+services:
+    ago.twig.extension:
+        class: Duf\AggregatorBundle\Twig\Extension\DateTimeAgoExtension
+        arguments: ['@request_stack']
+        tags:
+            - { name: twig.extension }
+        calls:
+            - [ setContainer, [ "@service_container" ]]
+
+    duf_aggregator.dufaggregatorconfig:
+        class: Duf\AggregatorBundle\Service\DufAggregatorConfig
+        arguments: ['@service_container']
+
+    duf_aggregator.dufaggregatorfacebook:
+        class: Duf\AggregatorBundle\Service\DufAggregatorFacebook
+        arguments: ['@service_container', '@router', '@doctrine.orm.entity_manager']
+
+    duf_aggregator.dufaggregatortwitter:
+        class: Duf\AggregatorBundle\Service\DufAggregatorTwitter
+        arguments: ['@service_container', '@router', '@doctrine.orm.entity_manager']
+
+    duf_aggregator.dufaggregatorinstagram:
+        class: Duf\AggregatorBundle\Service\DufAggregatorInstagram
+        arguments: ['@service_container', '@router', '@doctrine.orm.entity_manager']

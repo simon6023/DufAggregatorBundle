@@ -1,0 +1,45 @@
+<div class="post col-md-5" data-post-id="{{ post.id }}">
+	<div class="user-block">
+		{% if post.user is not null and post.user.picture is defined %}
+			<img class="img-circle img-bordered-sm" src="{{ post.user.picture }}" alt="user image">
+		{% endif %}
+
+		{% if post.user is not null and post.user.name is defined %}
+			<span class="username">
+				<a href="{{ post.user.link }}" target="_blank">{{ post.user.name }}</a>
+			</span>
+		{% endif %}
+
+		{% if post.date is not null %}
+			<a href="{{ post.link }}" target="_blank">
+				<span class="description">{{ 'aggregator.shared_on' | trans }} {{ post.date | ago }}</span>
+			</a>
+		{% endif %}
+	</div>
+
+	<p>
+		{{ post.caption }}
+	</p>
+
+	{% if post.image is not null %}
+		<div class="row margin-bottom">
+			<div class="col-sm-6">
+				<img class="img-responsive" src="{{ post.image }}" alt="Photo">
+			</div>
+		</div>
+	{% endif %}
+
+	<ul class="list-inline">
+		<li>
+			<a href="#" class="link-black text-sm post-state" data-state="{{ post.enabled }}">
+				<span class="enable {% if post.enabled %}hidden{% else %}visible{% endif %}">
+					<i class="fa fa-check"></i> Enable
+				</span>
+
+				<span class="disable {% if post.enabled %}visible{% else %}hidden{% endif %}">
+					<i class="fa fa-times"></i> Disable
+				</span>
+			</a>
+		</li>
+	</ul>
+</div>

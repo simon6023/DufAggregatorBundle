@@ -1,0 +1,3 @@
+duf_aggregator_homepage:
+    path:     /
+    defaults: { _controller: DufAggregatorBundle:Default:index }

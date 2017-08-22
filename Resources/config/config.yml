@@ -1,0 +1,5 @@
+# FOS JS Routing configuration
+fos_js_routing:
+    routes_to_expose:
+        - duf_admin_aggregator_view_posts
+        - duf_admin_aggregator_update_post_state

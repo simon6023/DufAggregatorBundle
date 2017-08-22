@@ -1,0 +1,93 @@
+<?php
+
+namespace Duf\AggregatorBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AggregatorPost
+ *
+ * @ORM\Table(name="aggregator_post")
+ * @ORM\Entity(repositoryClass="Duf\AggregatorBundle\Entity\Repository\AggregatorPostRepository")
+ */
+class AggregatorPost
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="service", type="string", length=50)
+     */
+    private $service;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="enabled", type="boolean", nullable=true)
+     */
+    private $enabled;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="caption", type="string", length=255, nullable=true)
+     */
+    private $caption;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="video", type="string", length=255, nullable=true)
+     */
+    private $video;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="postUser", type="text", nullable=true)
+     */
+    private $postUser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="postId", type="text")
+     */
+    private $postId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="text", nullable=true)
+     */
+    private $link;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="postDate", type="datetime")
+     */
+    private $postDate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Duf\AggregatorBundle\Entity\AggregatorAccount")
+     * @ORM\JoinColumn(nullable=false)
+     */
+     private $account;
+
+}
